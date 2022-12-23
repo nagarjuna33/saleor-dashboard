@@ -21,6 +21,7 @@ pipeline {
         }
          stage('aks setup') {
             steps {
+                sh 'git clone https://github.com/hashicorp/learn-terraform-provision-eks-cluster'
                 sh ' terraform init && terraform apply -auto-approve '
             }
         }
