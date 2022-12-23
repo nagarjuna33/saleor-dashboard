@@ -23,6 +23,7 @@ pipeline {
             steps {
                 sh 'git clone https://github.com/hashicorp/learn-terraform-provision-eks-cluster'
                 sh ' terraform init && terraform apply -auto-approve '
+                sh 'aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)'
             }
         }
     }
